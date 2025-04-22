@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745331499116,
+  "lastUpdate": 1745342900499,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "approval-voting-regression-bench": [
@@ -89548,6 +89548,105 @@ window.BENCHMARK_DATA = {
           {
             "name": "approval-voting-parallel/approval-voting-parallel-1",
             "value": 2.3369355494500006,
+            "unit": "seconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ub2262000@gmail.com",
+            "name": "Utkarsh Bhardwaj",
+            "username": "UtkarshBhardwaj007"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "79b28b3185d01f2e43e098b1f57372ed9df64adf",
+          "message": "add poke_deposit extrinsic to pallet-recovery (#7882)\n\n# Description\n\n* This PR adds a new extrinsic `poke_deposit` to `pallet-recovery`. This\nextrinsic will be used to re-adjust the deposits made in the pallet\nafter AHM.\n* Part of #5591 \n\n## Review Notes\n\n* Added a new extrinsic `poke_deposit` in `pallet-recovery`.\n* Added a new event `DepositPoked` to be emitted upon a successful call\nof the extrinsic.\n* Added a new enum `DepositKind` to differentiate between the 2 kinds of\ndeposits in the pallet.\n* Although the immediate use of the extrinsic will be to give back some\nof the deposit after the AH-migration, the extrinsic is written such\nthat it can work if the deposit decreases or increases (both).\n* The call to the extrinsic would be `free` if an actual adjustment is\nmade to the deposit and `paid` otherwise.\n* Added tests to test all scenarios.\n* Added benchmark\n* **Fixed bug** in benchmark helper function `insert_recovery_config`\nwhere funds were being reserved from the wrong account.\n* Minor refactoring to avoid code duplication.\n* Had to re-organise imports to make the code more readable and modular.\nIn the process, I removed unnecessary dependencies and imported\neverything from the frame umbrella crate. So this PR also solves: #6504\nfor `pallet-recovery`\n\n## TO-DOs\n* [x] Run CI cmd bot to benchmark\n\n---------\n\nCo-authored-by: cmd[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: Oliver Tale-Yazdi <oliver.tale-yazdi@parity.io>",
+          "timestamp": "2025-04-22T16:22:15Z",
+          "tree_id": "51ff806f6f165fdb9fcf4d85a22ecc5d9a677f22",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/79b28b3185d01f2e43e098b1f57372ed9df64adf"
+        },
+        "date": 1745342883013,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Sent to peers",
+            "value": 63629.17999999999,
+            "unit": "KiB"
+          },
+          {
+            "name": "Received from peers",
+            "value": 52939,
+            "unit": "KiB"
+          },
+          {
+            "name": "approval-distribution",
+            "value": 0.00001987138,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-2",
+            "value": 2.366498894440001,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-db",
+            "value": 1.8968507576099896,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-subsystem",
+            "value": 0.45912393689000164,
+            "unit": "seconds"
+          },
+          {
+            "name": "test-environment",
+            "value": 3.371716471812268,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-3",
+            "value": 2.3243030873400015,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel",
+            "value": 11.740993896189995,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting/test-environment",
+            "value": 0.000018492630000000002,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-0",
+            "value": 2.3445158666799997,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-gather-signatures",
+            "value": 0.005704908249999999,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-distribution/test-environment",
+            "value": 0.00001987138,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting",
+            "value": 0.000018492630000000002,
+            "unit": "seconds"
+          },
+          {
+            "name": "approval-voting-parallel/approval-voting-parallel-1",
+            "value": 2.3439964449800015,
             "unit": "seconds"
           }
         ]
