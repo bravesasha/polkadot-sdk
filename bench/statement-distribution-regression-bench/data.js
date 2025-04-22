@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745331524099,
+  "lastUpdate": 1745342925320,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "statement-distribution-regression-bench": [
@@ -43203,6 +43203,50 @@ window.BENCHMARK_DATA = {
           {
             "name": "statement-distribution",
             "value": 0.034022791998,
+            "unit": "seconds"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ub2262000@gmail.com",
+            "name": "Utkarsh Bhardwaj",
+            "username": "UtkarshBhardwaj007"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "79b28b3185d01f2e43e098b1f57372ed9df64adf",
+          "message": "add poke_deposit extrinsic to pallet-recovery (#7882)\n\n# Description\n\n* This PR adds a new extrinsic `poke_deposit` to `pallet-recovery`. This\nextrinsic will be used to re-adjust the deposits made in the pallet\nafter AHM.\n* Part of #5591 \n\n## Review Notes\n\n* Added a new extrinsic `poke_deposit` in `pallet-recovery`.\n* Added a new event `DepositPoked` to be emitted upon a successful call\nof the extrinsic.\n* Added a new enum `DepositKind` to differentiate between the 2 kinds of\ndeposits in the pallet.\n* Although the immediate use of the extrinsic will be to give back some\nof the deposit after the AH-migration, the extrinsic is written such\nthat it can work if the deposit decreases or increases (both).\n* The call to the extrinsic would be `free` if an actual adjustment is\nmade to the deposit and `paid` otherwise.\n* Added tests to test all scenarios.\n* Added benchmark\n* **Fixed bug** in benchmark helper function `insert_recovery_config`\nwhere funds were being reserved from the wrong account.\n* Minor refactoring to avoid code duplication.\n* Had to re-organise imports to make the code more readable and modular.\nIn the process, I removed unnecessary dependencies and imported\neverything from the frame umbrella crate. So this PR also solves: #6504\nfor `pallet-recovery`\n\n## TO-DOs\n* [x] Run CI cmd bot to benchmark\n\n---------\n\nCo-authored-by: cmd[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: Oliver Tale-Yazdi <oliver.tale-yazdi@parity.io>",
+          "timestamp": "2025-04-22T16:22:15Z",
+          "tree_id": "51ff806f6f165fdb9fcf4d85a22ecc5d9a677f22",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/79b28b3185d01f2e43e098b1f57372ed9df64adf"
+        },
+        "date": 1745342907887,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Received from peers",
+            "value": 106.39999999999996,
+            "unit": "KiB"
+          },
+          {
+            "name": "Sent to peers",
+            "value": 127.94399999999995,
+            "unit": "KiB"
+          },
+          {
+            "name": "statement-distribution",
+            "value": 0.034292253685999995,
+            "unit": "seconds"
+          },
+          {
+            "name": "test-environment",
+            "value": 0.045321011357999944,
             "unit": "seconds"
           }
         ]
