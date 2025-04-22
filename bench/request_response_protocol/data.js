@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745330910310,
+  "lastUpdate": 1745342205828,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "request_response_protocol": [
@@ -34127,6 +34127,114 @@ window.BENCHMARK_DATA = {
             "name": "request_response_protocol/litep2p/serially/16MB",
             "value": 2314409592,
             "range": "± 23548485",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ub2262000@gmail.com",
+            "name": "Utkarsh Bhardwaj",
+            "username": "UtkarshBhardwaj007"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "79b28b3185d01f2e43e098b1f57372ed9df64adf",
+          "message": "add poke_deposit extrinsic to pallet-recovery (#7882)\n\n# Description\n\n* This PR adds a new extrinsic `poke_deposit` to `pallet-recovery`. This\nextrinsic will be used to re-adjust the deposits made in the pallet\nafter AHM.\n* Part of #5591 \n\n## Review Notes\n\n* Added a new extrinsic `poke_deposit` in `pallet-recovery`.\n* Added a new event `DepositPoked` to be emitted upon a successful call\nof the extrinsic.\n* Added a new enum `DepositKind` to differentiate between the 2 kinds of\ndeposits in the pallet.\n* Although the immediate use of the extrinsic will be to give back some\nof the deposit after the AH-migration, the extrinsic is written such\nthat it can work if the deposit decreases or increases (both).\n* The call to the extrinsic would be `free` if an actual adjustment is\nmade to the deposit and `paid` otherwise.\n* Added tests to test all scenarios.\n* Added benchmark\n* **Fixed bug** in benchmark helper function `insert_recovery_config`\nwhere funds were being reserved from the wrong account.\n* Minor refactoring to avoid code duplication.\n* Had to re-organise imports to make the code more readable and modular.\nIn the process, I removed unnecessary dependencies and imported\neverything from the frame umbrella crate. So this PR also solves: #6504\nfor `pallet-recovery`\n\n## TO-DOs\n* [x] Run CI cmd bot to benchmark\n\n---------\n\nCo-authored-by: cmd[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: Oliver Tale-Yazdi <oliver.tale-yazdi@parity.io>",
+          "timestamp": "2025-04-22T16:22:15Z",
+          "tree_id": "51ff806f6f165fdb9fcf4d85a22ecc5d9a677f22",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/79b28b3185d01f2e43e098b1f57372ed9df64adf"
+        },
+        "date": 1745342188639,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "request_response_protocol/libp2p/serially/64B",
+            "value": 17300180,
+            "range": "± 104921",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/512B",
+            "value": 17956915,
+            "range": "± 151920",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/4KB",
+            "value": 19135511,
+            "range": "± 123401",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/64KB",
+            "value": 23107704,
+            "range": "± 154981",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/256KB",
+            "value": 51287511,
+            "range": "± 451505",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/2MB",
+            "value": 295475485,
+            "range": "± 2072908",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/libp2p/serially/16MB",
+            "value": 2411840874,
+            "range": "± 184525569",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/64B",
+            "value": 14699611,
+            "range": "± 87836",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/512B",
+            "value": 14686746,
+            "range": "± 153758",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/4KB",
+            "value": 15379434,
+            "range": "± 86651",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/64KB",
+            "value": 19754871,
+            "range": "± 218443",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/256KB",
+            "value": 49831899,
+            "range": "± 602044",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/2MB",
+            "value": 297105464,
+            "range": "± 12069253",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "request_response_protocol/litep2p/serially/16MB",
+            "value": 2419383777,
+            "range": "± 27032502",
             "unit": "ns/iter"
           }
         ]
