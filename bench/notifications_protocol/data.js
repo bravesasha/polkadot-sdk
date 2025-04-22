@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745330884962,
+  "lastUpdate": 1745342181468,
   "repoUrl": "https://github.com/paritytech/polkadot-sdk",
   "entries": {
     "notifications_protocol": [
@@ -61439,6 +61439,198 @@ window.BENCHMARK_DATA = {
             "name": "notifications_protocol/litep2p/with_backpressure/16MB",
             "value": 2385940736,
             "range": "± 50068594",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "ub2262000@gmail.com",
+            "name": "Utkarsh Bhardwaj",
+            "username": "UtkarshBhardwaj007"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "79b28b3185d01f2e43e098b1f57372ed9df64adf",
+          "message": "add poke_deposit extrinsic to pallet-recovery (#7882)\n\n# Description\n\n* This PR adds a new extrinsic `poke_deposit` to `pallet-recovery`. This\nextrinsic will be used to re-adjust the deposits made in the pallet\nafter AHM.\n* Part of #5591 \n\n## Review Notes\n\n* Added a new extrinsic `poke_deposit` in `pallet-recovery`.\n* Added a new event `DepositPoked` to be emitted upon a successful call\nof the extrinsic.\n* Added a new enum `DepositKind` to differentiate between the 2 kinds of\ndeposits in the pallet.\n* Although the immediate use of the extrinsic will be to give back some\nof the deposit after the AH-migration, the extrinsic is written such\nthat it can work if the deposit decreases or increases (both).\n* The call to the extrinsic would be `free` if an actual adjustment is\nmade to the deposit and `paid` otherwise.\n* Added tests to test all scenarios.\n* Added benchmark\n* **Fixed bug** in benchmark helper function `insert_recovery_config`\nwhere funds were being reserved from the wrong account.\n* Minor refactoring to avoid code duplication.\n* Had to re-organise imports to make the code more readable and modular.\nIn the process, I removed unnecessary dependencies and imported\neverything from the frame umbrella crate. So this PR also solves: #6504\nfor `pallet-recovery`\n\n## TO-DOs\n* [x] Run CI cmd bot to benchmark\n\n---------\n\nCo-authored-by: cmd[bot] <41898282+github-actions[bot]@users.noreply.github.com>\nCo-authored-by: Oliver Tale-Yazdi <oliver.tale-yazdi@parity.io>",
+          "timestamp": "2025-04-22T16:22:15Z",
+          "tree_id": "51ff806f6f165fdb9fcf4d85a22ecc5d9a677f22",
+          "url": "https://github.com/paritytech/polkadot-sdk/commit/79b28b3185d01f2e43e098b1f57372ed9df64adf"
+        },
+        "date": 1745342164056,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "notifications_protocol/libp2p/serially/64B",
+            "value": 4298880,
+            "range": "± 37296",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/64B",
+            "value": 304629,
+            "range": "± 4213",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/512B",
+            "value": 4487453,
+            "range": "± 69899",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/512B",
+            "value": 392395,
+            "range": "± 5306",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/4KB",
+            "value": 5323825,
+            "range": "± 86183",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/4KB",
+            "value": 891440,
+            "range": "± 12198",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/64KB",
+            "value": 10873121,
+            "range": "± 310424",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/64KB",
+            "value": 4966757,
+            "range": "± 124440",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/256KB",
+            "value": 49277462,
+            "range": "± 1501398",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/256KB",
+            "value": 38847241,
+            "range": "± 826993",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/2MB",
+            "value": 372717552,
+            "range": "± 2858146",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/2MB",
+            "value": 300925541,
+            "range": "± 3660186",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/serially/16MB",
+            "value": 2630317466,
+            "range": "± 18056339",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/libp2p/with_backpressure/16MB",
+            "value": 2608296530,
+            "range": "± 148167363",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/64B",
+            "value": 2926424,
+            "range": "± 31767",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/64B",
+            "value": 1414351,
+            "range": "± 9594",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/512B",
+            "value": 3090029,
+            "range": "± 87772",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/512B",
+            "value": 1468208,
+            "range": "± 9532",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/4KB",
+            "value": 3702821,
+            "range": "± 143564",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/4KB",
+            "value": 1814727,
+            "range": "± 22523",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/64KB",
+            "value": 7702869,
+            "range": "± 148451",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/64KB",
+            "value": 4888372,
+            "range": "± 89516",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/256KB",
+            "value": 35850665,
+            "range": "± 555929",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/256KB",
+            "value": 35580278,
+            "range": "± 477031",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/2MB",
+            "value": 326753809,
+            "range": "± 3260488",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/2MB",
+            "value": 294713449,
+            "range": "± 5973388",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/serially/16MB",
+            "value": 2589136879,
+            "range": "± 19134099",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "notifications_protocol/litep2p/with_backpressure/16MB",
+            "value": 2383735104,
+            "range": "± 83539984",
             "unit": "ns/iter"
           }
         ]
